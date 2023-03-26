@@ -14,7 +14,7 @@ for gender = ["female", "male"]
     new_number = char(num2str(current_experiment_number+ 1));
     rng(5);
     SMC;
-    txt_files;
+    %txt_files;
     
     if gender == "male"
         theta_male = theta;
@@ -24,9 +24,9 @@ for gender = ["female", "male"]
     
     
     title1 = ['Optimal Design for ', char(new_number), char(suffix(str2double(new_number(end))+1)), ' Experiment (', [upper(gen(1)), gen(2:end), 's'], ')'];
-    te_marginal;
-    saveas(fig2, [gen, '_', new_number, '.png']);
-    close all;
+    te_marginal;   % use the total entropy criterion for determining next design point
+    %saveas(fig2, [gen, '_', new_number, '.png']);
+    %close all;
     
     % Add utility plots for a bunch of other experimental goals e.g.
     % marginal paramter estimation, purely model discrimination

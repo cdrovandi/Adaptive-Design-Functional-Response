@@ -4,7 +4,7 @@ verbose = true;
 
 %% PROBLEM AND SMC SET UP (INPUT REQUIRED)
 % Specify method of determining next design point
- R = 4;
+ R = 4;  % this option runs SMC for posterior inference based on the data given in the Matlab object called "dataset".
 
 % Methods (R):
 % 0 - selects design point randomly and generates data
@@ -12,7 +12,7 @@ verbose = true;
 % 2 - selects design point that maximises utility for model discrimination and generates data
 % 3 - selects design point that maximises total entropy utility and generates data
 % 4 - selects both design and observation points from an example experiment (i.e. the dataset has already been collected)
-% 5 - selects design points used in an example experiment and generates data
+% 5 - selects design points used in an example experiment and generates data (for data generation, need to specify also the true model and its parameters) 
 
 % Specify models to be considered
 Models = [1 2];
@@ -51,7 +51,6 @@ modeltype= ["Beta Binomial type 2 functional response model";
 % end
 
 % Assign values to parameters (Input required for these values)
-utility_plots = false;
 I = size(dataset, 1); % number of data points
 K = length(Models); % number of models
 N = 500; % number of particles for SMC
@@ -116,10 +115,11 @@ for i= 1:I
  
         else
             data(i,1) = dataset(i,1); % take design point from example experiment
+            generate_data; % Generate observation from the design point
             
         end
         
-        generate_data; % Generate observation from the design point
+        
         
     elseif R==4
         data(i,:)= dataset(i,:); % Take all design point and observations from example dataset
@@ -175,13 +175,13 @@ for i= 1:I
     
     
     % For every iteration after the pilot study generate a utility plot
-    if utility_plots == true
-        if ismember(i, 16:39)
-            te_marginal;
-            saveas(fig, ['../Optimal design iterations/regenerated/', gen, '_', num2str(i+1), '.png']);
-            close all;
-        end
-    end
+    %if utility_plots == true
+    %    if ismember(i, 16:39)
+    %        te_marginal;
+    %        saveas(fig, ['../Optimal design iterations/regenerated/', gen, '_', num2str(i+1), '.png']);
+    %        close all;
+    %    end
+    %end
     
 
 end
