@@ -31,6 +31,7 @@ sequential and baseline data.
 - If a dataset is already collect, posterior inference can be generated
   using option R = 4 in SMC.m (this option won't do any optimal design).
 - All visualisations are generated from the file "all_inference_plots.m".
+- The data folder holds the baseline, pilot and adaptive datasets collected for the paper.
 
 
 
