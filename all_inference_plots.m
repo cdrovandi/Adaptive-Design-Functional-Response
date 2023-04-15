@@ -15,18 +15,27 @@ legend_labels = {"Adaptive design data", ...
     "Adaptive design data", ...
     "Baseline design data"};
 
+title_labels = {"(a) Male baseline design data", ...
+    "(b) Male adaptive design data", ...
+    "(c) Female baseline design data", ...
+    "(d) Female adaptive design data"};
+
 % Graphing settings which differ across the datasets
 pilot_indicies = {1:16, [1:8, 33:40], 1:16, [1:8, 33:40]};
 xlims = {[0, 140], [0, 50], [0, 140], [0, 50]};
 ylims = {[0, 25], [0, 25], [0, 50], [0, 50]};
 col =  {[0 0.4470 0.7410], [0 0.4470 0.7410], [0.8500 0.3250 0.0980], [0.8500 0.3250 0.0980]};
 
+tiledlayout(2,2,"TileSpacing","compact","Padding","tight")
 
 % Iterate through the datasets and plot them
 for index = 1:4
+
+    nexttile
+    
     
     % Plot data (different shape for data points in pilot experiments)
-    f1 = figure;
+    %f1 = figure;
     ind = pilot_indicies{index};
     data = load(datasets{index});
     jitter = normrnd(0, 0.2, size(data, 1), 1);
@@ -43,6 +52,8 @@ for index = 1:4
     set(gcf,'color','w');
     xlim(xlims{index});
     ylim(ylims{index});
+
+    title(title_labels{index});
     
 end
 
@@ -115,16 +126,23 @@ col = {[0 0.4470 0.7410], [0.8500 0.3250 0.0980]};
 xlims = {[0 0.4], [0.05 0.4]};
 ylims = {[0.1 0.9], [0 0.4]};
 
+tiledlayout(1,2,"TileSpacing","compact","Padding","tight")
+
+title_labels = {"(a) Male data", ...
+    "(b) Female data"};
+
 for index = 1:2
+
+    nexttile;
     
     x1 = meshgrid(0:0.01:1);
     x2 = x1';
     xi = [x1(:), x2(:)];
     
     % Set up figure
-    fp = figure;
+    %fp = figure;
     
-    set(fp, ...
+    set(gcf, ...
         'DefaultFigureColor', 'w', ...
         'DefaultAxesLineWidth', 0.5, ...
         'DefaultAxesXColor', 'k', ...
@@ -174,6 +192,8 @@ for index = 1:2
     set(gcf,'color','w');
     xlim(xlims{index});
     ylim(ylims{index});
+
+    title(title_labels{index});
     
 end
 
@@ -192,16 +212,25 @@ col = {[0 0.4470 0.7410], [0.8500 0.3250 0.0980]};
 xlims = {[0 0.25], [0.1 0.45]};
 ylims = {[0.1 0.9], [0.1 0.45]};
 
+
+tiledlayout(1,2,"TileSpacing","compact","Padding","tight")
+
+title_labels = {"(a) Male data", ...
+    "(b) Female data"};
+
+
 for index = 1:2
+
+    nexttile
     
     x1 = meshgrid(0:0.01:1);
     x2 = x1';
     xi = [x1(:), x2(:)];
     
     % Set up figure
-    f3 = figure;
+    %f3 = figure;
     
-    set(f3, ...
+    set(gcf, ...
         'DefaultFigureColor', 'w', ...
         'DefaultAxesLineWidth', 0.5, ...
         'DefaultAxesXColor', 'k', ...
@@ -251,11 +280,20 @@ for index = 1:2
     set(gcf,'color','w');
     xlim(xlims{index});
     ylim(ylims{index});
+
+    title(title_labels{index});
     
 end
 
 
 %% Model Probabilities over time
+
+tiledlayout(1,2,"TileSpacing","compact","Padding","tight")
+
+title_labels = {"(a) Model 1 probability", ...
+    "(b) Model 1 log determinant posterior covariance"};
+
+nexttile;
 
 % Plot settings
 model = 1;
@@ -274,9 +312,9 @@ line_colours = [0 0.4470 0.7410;
 line_widths = [0.4, 1, 0.4, 0.2, 0.4, 1, 0.4, 0.2];
 
 % Set up figure
-f4 = figure;
+%f4 = figure;
 
-set(f4, ...
+set(gcf, ...
     'DefaultFigureColor', 'w', ...
     'DefaultAxesLineWidth', 0.5, ...
     'DefaultAxesXColor', 'k', ...
@@ -309,9 +347,11 @@ xlabel("Observations Collected");
 ylabel("Model Probability");
 set(gcf,'color','w');
 
-
+title(title_labels{1});
 
 %% Precision model parameters over time
+
+nexttile;
 
 % Plot settings
 model = 1;
@@ -330,9 +370,9 @@ line_colours = [0 0.4470 0.7410;
 line_widths = [0.4, 1, 0.4, 0.2, 0.4, 1, 0.4, 0.2];
 
 % Set up figure
-f5 = figure;
+%f5 = figure;
 
-set(f5, ...
+set(gcf, ...
     'DefaultFigureColor', 'w', ...
     'DefaultAxesLineWidth', 0.5, ...
     'DefaultAxesXColor', 'k', ...
@@ -366,7 +406,7 @@ xlabel("Observations collected");
 ylabel("Log determinant of the posterior covariance matrix");
 set(gcf,'color','w');
 
-
+title(title_labels{2});
 
 %% All data
 
