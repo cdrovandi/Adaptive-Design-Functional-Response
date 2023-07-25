@@ -2,7 +2,9 @@
 
 Matlab code for the paper:
 
-Nikos E. Papanikolaou, Hayden Moffat, Argyro Fantinou, Dionysios P. Perdikis, Michael Bode and Christopher Drovandi. Adaptive experimental design produces superior and more efficient estimates of predator functional response. 
+Papanikolaou NE, Moffat H, Fantinou A, Perdikis D, Bode M, Drovandi C (2023) Adaptive experimental design produces superior and more efficient estimates of predator functional response. PLoS ONE 18(7): e0288445. https://doi.org/10.1371/journal.pone.0288445
+
+https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0288445&type=printable
 
 This article is dedicated to Dr Nikos E. Papanikolaou, who sadly and unexpectedly passed away after the majority of this manuscript had been completed
 
